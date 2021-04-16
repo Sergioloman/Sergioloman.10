@@ -1,0 +1,27 @@
+{
+  "name": "sergioloman.10",
+  "version": "1.0.0",
+  "description": "Work profiles",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sergioloman/Sergioloman.10.git"
+  },
+  "author": "Sergio Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sergioloman/Sergioloman.10/issues"
+  },
+  "homepage": "https://github.com/Sergioloman/Sergioloman.10#readme"
+}
