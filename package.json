@@ -1,9 +1,10 @@
 {
-  "name": "sergioloman.10",
+  "name": "workplace-generator",
   "version": "1.0.0",
   "description": "Work profiles",
   "main": "index.js",
   "directories": {
+    "lib": "lib",
     "test": "tests"
   },
   "dependencies": {
@@ -12,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",
