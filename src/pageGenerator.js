@@ -23,3 +23,8 @@ Roberto.getId()
 `*/
 
 //render profiles for employee.engineer.intern.manager
+function pageGenerator(data){
+    return console.log(data.Roberto)
+}
+
+module.exports = pageGenerator;
