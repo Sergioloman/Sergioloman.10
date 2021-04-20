@@ -8,6 +8,7 @@ const Engineer = require("./lib/Engineer");
 const Employee = require("./lib/Employees");
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const { throws } = require('assert');
 
 class Project{
     constructor(){
@@ -85,10 +86,12 @@ class Project{
                 message: 'What is your TM office number?'
             }
         ])
-        .then(mgmtResponses =>{
+        .then(({managerName}) =>{
+            console.log(({managerName}))
             //push this value to manager answers in object
-            console.log(mgmtResponses)
-            
+            this.manager = new Manager(managerName);
+            console.log(this.manager.getRole());
+           
             return this.menu(this.addTeam)
             
         })
