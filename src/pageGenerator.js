@@ -1,4 +1,4 @@
-
+//ok so how to we get info from our questions,js?
 // function renderPage(){
 
 /*

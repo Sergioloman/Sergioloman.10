@@ -29,7 +29,7 @@ class Project{
                     type: 'list',
                     name: 'addTeam',
                     message: 'Select any of the roles below',
-                    choices: ['Team Manager','Engineer', 'Intern',],
+                    choices: ['Team Manager','Engineer','Intern'],
                     when: ({ confirmTeam }) => {
                         if (confirmTeam) {
                             return true
@@ -81,9 +81,9 @@ class Project{
             },
             {
                 type: 'input',
-                name: 'managerId',
+                name: 'managerOffice',
                 message: 'What is your TM office number?'
-            },
+            }
         ])
         .then(mgmtResponses =>{
             //push this value to manager answers in object
