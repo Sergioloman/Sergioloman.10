@@ -11,7 +11,6 @@ const generateTeam = team => {
           <p class="card-text">${manager.getId()}</p>
           <a href="mailto:${manager.getEmail()}" class="card-link">${manager.getEmail()}</a>
           <p class="card-text">${manager.getOfficeNumber()}</p>
-          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
         `

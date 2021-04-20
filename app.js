@@ -6,6 +6,7 @@ const inquirer = require('inquirer');
 const render = require('./src/pageGenerator');
 
 const Employee = require("./lib/Employees");
+const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
@@ -21,13 +22,13 @@ function menu() {
                 type: 'confirm',
                 name: 'confirmTeam',
                 message: 'Would you like to a member to your team?',
-                // make this a list, and if no then create team , if yes then follow up with proimpts.
+                // alternatively we can make a list and use switch conditionals basedn on values.
             },
             {
                 type: 'list',
                 name: 'addTeam',
                 message: 'Select any of the roles below',
-                choices: ['Team Manager', 'Engineer', 'Intern','Done'],
+                choices: ['Team Manager', 'Engineer', 'Intern', 'Done'],
                 when: ({ confirmTeam }) => {
                     if (confirmTeam) {
                         return true
@@ -39,8 +40,8 @@ function menu() {
         ]
     )
         .then(menuAnswers => {
-            switch(menuAnswers.addTeam){
-                case 'Engineer': 
+            switch (menuAnswers.addTeam) {
+                case 'Engineer':
                     questionsEngineer();
                     break;
                 case "Intern":
@@ -49,24 +50,15 @@ function menu() {
                 case "Team Manager":
                     questionsMgmt();
                     break;
-                default: 
+                default:
                     createTeam()
 
             }
-            // if (menuAnswers.addTeam === 'Engineer') {
-            //     return this.questionsEngineer()
-            // } if (menuAnswers.addTeam === 'Intern') {
-            //     return this.questionsIntern()
-            // } if (menuAnswers.addTeam === 'Team Manager') {
-            //     return this.questionsMgmt()
-            // }
-            // else {
-            //     return false
-            // }
+       
         })
 }
 
-function questionsMgmt(){
+function questionsMgmt() {
     inquirer.prompt([
         {
             type: 'input',
@@ -101,7 +93,7 @@ function questionsMgmt(){
             //create new instance of manager
             const manager = new Manager(responses.managerName, responses.managerId, responses.managerEmail, responses.managerOffice);
             console.log(manager);
-     
+
             //push manager to team array
             team.push(manager)
             //call menu again
@@ -110,7 +102,7 @@ function questionsMgmt(){
         })
 }
 
-function questionsEngineer(){
+function questionsEngineer() {
     inquirer.prompt(
         [
 
@@ -143,14 +135,19 @@ function questionsEngineer(){
                 message: "What is their Github username?",
             },
         ]
-    ).then(engineerAnswers => {
-        //push this value to our new construct
-        console.log(engineerAnswers)
-        return this.menu()
+    ).then((responses) => {
+        //create a new instance of engineer
+        const engineer = new Engineer(responses.engineerName, engineerId, engineerEmal, engineerGithub)
+        console.log(engineer)
+
+        //push engineer to team array
+        team.push(engineer)
+        //call menu again
+        menu()
     })
 }
 
-function questionsIntern(){
+function questionsIntern() {
     inquirer.prompt(
         [
             {
@@ -178,19 +175,24 @@ function questionsIntern(){
             },
             {
                 type: 'input',
-                name: 'internGithub',
+                name: 'internSchool',
                 message: "What is the name of their School?",
             },
         ]
-    ).then(internAnswers => {
-        //push this value to our new construct
-        console.log(internAnswers)
-        return this.menu()
+    ).then((responses) => {
+        //create a new instance of intern
+        const intern = new Intern(responses.internName, internId, internEmal, internSchool)
+        console.log(intern)
+
+        //push intern to team array
+        team.push(intern)
+        //call menu again
+        menu()
     })
 }
 
-function createTeam(){
-    if (!fs.existsSync(output_dir)){
+function createTeam() {
+    if (!fs.existsSync(output_dir)) {
         fs.mkdirSync(output_dir)
     }
     //write filesyhnch since we dont need a callback. all we ened is to specify the file name, data,
