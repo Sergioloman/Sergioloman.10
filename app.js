@@ -1,20 +1,22 @@
-//get everything installed using the following terminal commands: npm init// npm install inquirer// npm install jest --save-dev//then test using npm test//
-
+//dependencies
 const fs = require('fs')
 const path = require('path')
 const inquirer = require('inquirer');
 const render = require('./src/pageGenerator');
-
+//accesing our constructs
 const Employee = require("./lib/Employees");
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
+// utilities for file creation
 const output_dir = path.resolve(__dirname, 'output')
+// this path is responsible for creating the html file on the correct destination.
 const output_file = path.join(output_dir, 'team.html')
-
+// answers array. We will store our data here so it can be redered later.
 const team = [];
 
+// Prompts
 function menu() {
     inquirer.prompt(
         [
@@ -38,6 +40,7 @@ function menu() {
             }
         ]
     )
+    // Switch conditionals helps us go through each answer more efficiently
         .then(menuAnswers => {
             switch (menuAnswers.addTeam) {
                 case 'Engineer':
@@ -91,7 +94,6 @@ function questionsMgmt() {
         .then((responses) => {
             //create new instance of manager
             const manager = new Manager(responses.managerName, responses.managerId, responses.managerEmail, responses.managerOffice);
-            console.log(manager);
 
             //push manager to team array
             team.push(manager)
@@ -137,7 +139,6 @@ function questionsEngineer() {
     ).then((responses) => {
         //create a new instance of engineer
         const engineer = new Engineer(responses.engineerName, responses.engineerId, responses.engineerEmail, responses.engineerGithub)
-        console.log(engineer)
 
         //push engineer to team array
         team.push(engineer)
@@ -181,7 +182,6 @@ function questionsIntern() {
     ).then((responses) => {
         //create a new instance of intern
         const intern = new Intern(responses.internName, responses.internId, responses.internEmal, responses.internSchool)
-        console.log(intern)
 
         //push intern to team array
         team.push(intern)
@@ -190,6 +190,7 @@ function questionsIntern() {
     })
 }
 
+// here we are going to create the team file, we are passing output_dir to our path function above.
 function createTeam() {
     if (!fs.existsSync(output_dir)) {
         fs.mkdirSync(output_dir)
@@ -198,5 +199,5 @@ function createTeam() {
     fs.writeFileSync(output_file, render(team), 'utf-8')
 }
 
-
+//getting the promtps running
 menu()
