@@ -47,6 +47,7 @@ Once you are in the 'test' directory, you can run the npm test command to execut
 
 Want to see how it works? Check out this [walktrough-video](https://drive.google.com/file/d/1SGzktq-eH-5xhCfImkymz_QEdGJP_ise/view) to see the app in actiuon!
 
+
 ![terminal-screenshot](./Assets/screenshots/terminal.PNG)
-![terminal-](./Assets/screenshots/browser.PNG)
-git
+![Browser-screenshot](./Assets/screenshots/browser.PNG)
+
