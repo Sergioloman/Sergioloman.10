@@ -2,7 +2,7 @@ const generateTeam = team => {
 
     const managerCard = manager => {
         return `
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${manager.getName()}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${manager.getRole()}</h6>
@@ -16,7 +16,7 @@ const generateTeam = team => {
 
     const engineerCard = engineer =>{
         return `
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-3" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${engineer.getName()}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${engineer.getRole()}</h6>
@@ -29,7 +29,7 @@ const generateTeam = team => {
     }
     const internCard = intern =>{
       return `
-      <div class="card" style="width: 18rem;">
+      <div class="card mb-3" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">${intern.getName()}</h5>
         <h6 class="card-subtitle mb-2 text-muted">${intern.getRole()}</h6>
@@ -75,11 +75,20 @@ module.exports = team=>{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Title</title>
+    <title>Team Generator</title>
     </head>
     <body>
+    <div class= 'pt-4 pb-4 page-header text-center text-light bg-danger'>
+      <h1 class="display-1 ">My Team</h1>
+    </div>
+    <div class ='container'>
+      <div class= 'row p-3 d-flex justify-content-around'>
+      ${generateTeam(team)}
+      </div>
+    </div>
 
-    ${generateTeam(team)}
+
+    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
