@@ -22,13 +22,12 @@ function menu() {
                 type: 'confirm',
                 name: 'confirmTeam',
                 message: 'Would you like to a member to your team?',
-                // alternatively we can make a list and use switch conditionals basedn on values.
             },
             {
                 type: 'list',
                 name: 'addTeam',
                 message: 'Select any of the roles below',
-                choices: ['Team Manager', 'Engineer', 'Intern', 'Done'],
+                choices: ['Team Manager', 'Engineer', 'Intern'],
                 when: ({ confirmTeam }) => {
                     if (confirmTeam) {
                         return true
@@ -126,7 +125,7 @@ function questionsEngineer() {
             },
             {
                 type: 'input',
-                name: 'engineerEmal',
+                name: 'engineerEmail',
                 message: "What is their Email?",
             },
             {
@@ -137,7 +136,7 @@ function questionsEngineer() {
         ]
     ).then((responses) => {
         //create a new instance of engineer
-        const engineer = new Engineer(responses.engineerName, engineerId, engineerEmal, engineerGithub)
+        const engineer = new Engineer(responses.engineerName, responses.engineerId, responses.engineerEmail, responses.engineerGithub)
         console.log(engineer)
 
         //push engineer to team array
@@ -181,7 +180,7 @@ function questionsIntern() {
         ]
     ).then((responses) => {
         //create a new instance of intern
-        const intern = new Intern(responses.internName, internId, internEmal, internSchool)
+        const intern = new Intern(responses.internName, responses.internId, responses.internEmal, responses.internSchool)
         console.log(intern)
 
         //push intern to team array
